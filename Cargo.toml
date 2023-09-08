@@ -1,0 +1,57 @@
+[package]
+name = "crypto"
+version = "0.1.0"
+authors = ["Automata Team"]
+edition = "2021"
+license = "Apache-2.0"
+
+[features]
+default = ["std"]
+sgx = ["sgxlib/sgx", "sgxlib/types"]
+
+std = ["serde/std", "rand-std", "blst/std", "serde_json/std", "serde-big-array/std", "thirdparty_rand/std", "aes-gcm/std", "hex/std"]
+tstd = ["sgxlib/tstd", "sgxlib/types", "serde/tstd", "blst/tstd", "serde_json/tstd", "serde-big-array/tstd", "thirdparty_rand", "hex/tstd"]
+
+[dependencies]
+sgxlib = { git = "https://github.com/automata-network/sgxlib", default-features = false }
+hex = { git = "https://github.com/automata-network/hex-rs", default-features = false }
+
+serde = { git = "https://github.com/automata-network/sgxlib-thirdparty", default-features = false }
+serde_json = { git = "https://github.com/automata-network/sgxlib-thirdparty", default-features = false }
+serde-big-array = { git = "https://github.com/automata-network/sgxlib-thirdparty", default-features = false }
+blst = { git = "https://github.com/automata-network/sgxlib-thirdparty", default-features = false }
+
+tiny-keccak           = { version = "2.0", features = ["keccak"] }
+rust-secp256k1        = { version = "0.27", default-features = false, features = ["recovery"], package = "secp256k1" }
+
+primitive-types       = { version = "0.9.0", default-features = false, features = ["codec", "rlp", "scale-info"] }
+
+rand-std = { optional = true, package = "rand", version = "0.8.5" }
+thirdparty_rand = { package = "rand", optional = true, version = "0.7", default-features = false }
+rand_core = { version = "0.6" }
+
+aes-gcm = { version = "0.10.2", default-features = false, features = ["alloc"] }
+
+sha1-lib = { version = "=0.6.0", package = "sha1" }
+
+
+schnorrkel = { version = "0.9.1", default-features = false }
+x25519-dalek          = { version = "1.1", default-features = false, features = ["u64_backend"]}
+curve25519-dalek      = { version = "2.1", default-features = false, features = ["u64_backend"]}
+
+[patch.'https://github.com/apache/teaclave-sgx-sdk.git']
+sgx_alloc = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_backtrace_sys = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_build_helper = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_demangle = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_libc = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_rand = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_tcrypto = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_ucrypto = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_tkey_exchange = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_tprotected_fs = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_trts = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_tstd = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_types = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_unwind = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
+sgx_urts = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
