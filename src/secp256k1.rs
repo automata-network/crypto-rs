@@ -167,7 +167,7 @@ impl Secp256k1PublicKey {
         }
     }
 
-    pub fn from_raw_bytes(bytes: [u8; 64]) -> Self {
+    pub fn from_raw_bytes(bytes: &[u8; 64]) -> Self {
         let mut pubkey = Self {
             gx: [0_u8; 32],
             gy: [0_u8; 32],
