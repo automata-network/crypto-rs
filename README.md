@@ -1,6 +1,6 @@
 # Crypto Library
 
-[![License](https://img.shields.io/badge/license-Apache-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache2-green.svg)](LICENSE)
 
 a cryptography library for Rust that is tailored to support both standard (std) and customized (tstd) environments. With a comprehensive suite of cryptographic tools and algorithms, crypto enables secure and robust handling of encryption, hashing, and more.
 
