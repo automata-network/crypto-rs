@@ -102,6 +102,20 @@ impl<'de> Deserialize<'de> for Secp256k1PrivateKey {
     }
 }
 
+impl From<&[u8]> for Secp256k1PrivateKey {
+    fn from(data: &[u8]) -> Self {
+        Self::new(data).unwrap()
+    }
+}
+
+impl From<&str> for Secp256k1PrivateKey {
+    fn from(item: &str) -> Self {
+        let prvkey_str = item.trim_start_matches("0x");
+        let prvkey_bytes = hex::decode(prvkey_str).unwrap();
+        (&prvkey_bytes[..]).into()
+    }
+}
+
 #[derive(Debug, PartialEq, Eq, Hash, PartialOrd, Ord, Copy, Clone)]
 pub struct Secp256k1PublicKey {
     pub gx: [u8; 32],
