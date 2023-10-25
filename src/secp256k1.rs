@@ -211,7 +211,7 @@ impl Secp256k1RecoverableSignature {
         let mut r = [0_u8; 32];
         let mut s = [0_u8; 32];
         r.copy_from_slice(&sig[..32]);
-        s.copy_from_slice(&sig[32..]);
+        s.copy_from_slice(&sig[32..64]);
         Self { v: sig[64], r, s }
     }
 
