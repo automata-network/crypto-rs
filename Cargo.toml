@@ -22,7 +22,7 @@ serde-big-array = { git = "https://github.com/automata-network/sgxlib-thirdparty
 blst = { git = "https://github.com/automata-network/sgxlib-thirdparty", default-features = false }
 
 tiny-keccak           = { version = "2.0", features = ["keccak"] }
-rust-secp256k1        = { version = "0.27", default-features = false, features = ["recovery"], package = "secp256k1" }
+rust-secp256k1        = { version = "<0.28", default-features = false, features = ["recovery"], package = "secp256k1" }
 
 primitive-types       = { version = "0.9.0", default-features = false, features = ["codec", "rlp", "scale-info"] }
 
@@ -34,10 +34,13 @@ aes-gcm = { version = "0.10.2", default-features = false, features = ["alloc"] }
 
 sha1-lib = { version = "=0.6.0", package = "sha1" }
 
-
+byteorder = "=1.4.3"
 schnorrkel = { version = "0.9.1", default-features = false }
 x25519-dalek          = { version = "1.1", default-features = false, features = ["u64_backend"]}
 curve25519-dalek      = { version = "2.1", default-features = false, features = ["u64_backend"]}
+
+[build-dependencies]
+cc = "=1.0.94"
 
 [patch.'https://github.com/apache/teaclave-sgx-sdk.git']
 sgx_alloc = { git = "https://github.com/automata-network/incubator-teaclave-sgx-sdk", tag = "v1.1.4" }
